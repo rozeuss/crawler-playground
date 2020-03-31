@@ -18,11 +18,18 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor 'org.projectlombok:lombok:1.18.12'
-    compileOnly 'org.projectlombok:lombok:1.18.12'
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.0'
-    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
-    implementation group: 'edu.uci.ics', name: 'crawler4j', version: '4.4.0'
-    implementation group: 'org.apache.commons', name: 'commons-configuration2', version: '2.0'
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    annotationProcessor "org.projectlombok:lombok:${lombok}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombok}"
+    compileOnly "org.projectlombok:lombok:${lombok}"
+    testCompile "org.projectlombok:lombok:${lombok}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jackson_databind}"
+    implementation "commons-io:commons-io:${commons_io}"
+    implementation "edu.uci.ics:crawler4j:${crawler4j}"
+    implementation "org.apache.commons:commons-configuration2:${commons_configuration}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${jupiter}"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:${jupiter}"
+}
+
+test {
+    useJUnitPlatform()
 }

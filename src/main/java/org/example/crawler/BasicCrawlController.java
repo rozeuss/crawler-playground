@@ -15,6 +15,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class BasicCrawlController
@@ -64,10 +65,16 @@ public class BasicCrawlController
         return controller
             .getCrawlersLocalData()
             .stream()
-            .map(v -> (ConcurrentHashMap.KeySetView<PageMetadata, Boolean>) v)
+            .map(castUnchecked())
             .flatMap(Collection::stream)
             .map(PageMetadata.class::cast)
             .collect(Collectors.toSet());
+    }
+    
+    @SuppressWarnings("unchecked")
+    private static Function<Object, ConcurrentHashMap.KeySetView<PageMetadata, Boolean>> castUnchecked()
+    {
+        return v -> (ConcurrentHashMap.KeySetView<PageMetadata, Boolean>) v;
     }
     
     private File getResultsFile()

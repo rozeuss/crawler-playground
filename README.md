@@ -1,6 +1,7 @@
 # Crawler playground
 
-Crawler4j is a Java library which provides a simple interface for crawling the web. 
+[Crawler4j](https://github.com/yasserg/crawler4j) is a Java library which provides a simple interface for crawling the web. 
+It's pretty configurable, although there are many opened issues and hanging pull-requests.
 
 ## Prerequisites
    
@@ -15,6 +16,9 @@ Provide input properties `app.properties`.
 Build project:
 `gradle clean build`
 
+Test project:
+`gradle clean test`
+
 Run project:
 `gradle run`
 
@@ -25,7 +29,6 @@ project resources.
 
 ## To consider
 - usage of **_jsoup_** for some advanced extracting,
-- write tests against html,
 - dedicated interfaces for static resources/location.
 
 
